@@ -22,6 +22,9 @@
           <input type="text" id="lastname" name="lastname"> <br> 
           <br>
           <input type="submit" value="Submit" class="button">
+          <input type="text" id="lastname" name="lastname"> <br> 
+          <br>
+          <input type="submit" value="Submit" class="button">
     </form>
 </body>
 </html>
