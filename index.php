@@ -1,23 +1,17 @@
 <?php
+
 include('config.php');
 
 $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=UTF8";
 
-try
-{
+try {
     $pdo = new PDO($dsn, $dbUser, $dbPass);
-    if ($pdo)
-    {
-       // echo "er is een verbinding!!!!";
-    }
-    else 
-    {
+    if ($pdo) {
+    } else {
         echo "er is een error";
     }
-}
-catch(PDOException $e)
-{
-    echo $e -> getMessage();
+} catch (PDOException $e) {
+    echo $e->getMessage();
 }
 
 
@@ -27,14 +21,9 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
-// var_dump($result);
-
-
-// echo $result[0]->Voornaam;
 $row = "";
 
-foreach($result as $info)
-{
+foreach ($result as $info) {
     $row .= "<tr>
                 <td>$info->Merk</td>
                 <td>$info->Model</td>
@@ -58,6 +47,6 @@ foreach($result as $info)
         <th></th>
     </thead>
     <tbody>
-           <?php echo $row ?>
+        <?php echo $row ?>
     </tbody>
 </table>
