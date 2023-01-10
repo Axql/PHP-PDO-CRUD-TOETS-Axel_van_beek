@@ -48,9 +48,7 @@ foreach($result as $info)
 }
 ?>
 <h3>Autos</h3>
-<a href="index.php">
-    <input type="button" value="maak een nieuw record">
-</a>
+
 <table border="1">
     <thead>
         <th>Merk</th>
