@@ -23,7 +23,6 @@ catch(PDOException $e)
 
 $sql = "SELECT Merk,Model,Topsnelheid,Prijs,id FROM DureAuto";
 
-
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -37,18 +36,19 @@ $row = "";
 foreach($result as $info)
 {
     $row .= "<tr>
-    <td>$info->voornaam</td>
-    <td>$info->tussenvoegsel</td>
-    <td>$info->achternaam</td>
-    <td>
-    <a href='delete.php?Id=$info->id'>
-        <img src='img/b_drop.png' alt='cross'
-    </td>
-    <td>
-    <a href='update.php?Id=$info->id'>
-        <img src='img/b_edit.png' alt='pen'
-    </td>
-</tr>";
+                <td>$info->Merk</td>
+                <td>$info->Model</td>
+                <td>$info->Topsnelheid</td>
+                <td>$info->Prijs</td>
+                <td>
+                <a href='delete.php?Id=$info->id'>
+                    <img src='img/b_drop.png' alt='cross'
+                </td>
+                <td>
+                <a href='update.php?Id=$info->id'>
+                    <img src='img/b_edit.png' alt='pen'
+                </td>
+            </tr>";
 }
 ?>
 <h3>Autos</h3>
