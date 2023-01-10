@@ -17,11 +17,11 @@ try{
 $sql = "DELETE FROM DureAuto 
         WHERE Id = :Id;";
 
-$peppiekokkie = $pdo->prepare($sql);
+$statement = $pdo->prepare($sql);
 
-$peppiekokkie->bindValue(':Id', $_GET['Id'],PDO::PARAM_INT);
+$statement->bindValue(':Id', $_GET['Id'],PDO::PARAM_INT);
 
-$result = $peppiekokkie->execute();
+$result = $statement->execute();
 
 if($result)
 {
