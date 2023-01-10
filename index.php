@@ -21,7 +21,8 @@ catch(PDOException $e)
 }
 
 
-$sql = "SELECT voornaam,tussenvoegsel,achternaam, id FROM Persoon";
+$sql = "SELECT Merk,Model,Topsnelheid,Prijs,id FROM DureAuto";
+
 
 $statement = $pdo->prepare($sql);
 $statement->execute();
