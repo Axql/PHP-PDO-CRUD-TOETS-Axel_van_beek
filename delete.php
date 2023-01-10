@@ -7,14 +7,14 @@ try{
     $pdo = new PDO($dsn, $dbUser, $dbPass);
     if($pdo)
     {
-        echo " er is verbinding gemaakt";
+        // echo " er is verbinding gemaakt";
     }
 } catch (PDOException $e)
 {
     $e->getMessage();
 }
 
-$sql = "DELETE FROM Persoon 
+$sql = "DELETE FROM DureAuto 
         WHERE Id = :Id;";
 
 $peppiekokkie = $pdo->prepare($sql);
@@ -25,7 +25,7 @@ $result = $peppiekokkie->execute();
 
 if($result)
 {
-    echo "het record is verwijderd";
+    echo "het record is succesvol verwijderd";
     header('Refresh:2.5; url=read.php');
 }
 else 

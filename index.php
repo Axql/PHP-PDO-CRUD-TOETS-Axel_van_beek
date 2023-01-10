@@ -1,30 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <h1>PDO CRUD 1</h1>
+<?php
+include('config.php');
 
-    <form action="create.php" method="post"> 
-          <label for="firstname">voornaam </label> <br> 
-          <input type="text" id="voornaam" name="voornaam"> <br>
+$dsn = "mysql:host=$dbHost;dbname=$dbName;charset=UTF8";
 
-          <label for="infix">tussenvoegsel </label><br>
-          <input type="text" id="infix" name="infix"> <br>
-          
-          <label for="lastname">achternaam </label><br> 
-          <input type="text" id="lastname" name="lastname"> <br> 
-          <br>
-          <input type="submit" value="Submit" class="button">
-          <input type="text" id="lastname" name="lastname"> <br> 
-          <br>
-          <input type="submit" value="Submit" class="button">
-    </form>
-</body>
-</html>
+try
+{
+    $pdo = new PDO($dsn, $dbUser, $dbPass);
+    if ($pdo)
+    {
+       // echo "er is een verbinding";
+    }
+    else 
+    {
+        echo "er is een error";
+    }
+}
+catch(PDOException $e)
+{
+    echo $e -> getMessage();
+}
+
+
+$sql = "SELECT voornaam,tussenvoegsel,achternaam, id FROM Persoon";
+
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+// var_dump($result);
+
+
+// echo $result[0]->Voornaam;
+$row = "";
+
+foreach($result as $info)
+{
+    $row .= "<tr>
+    <td>$info->voornaam</td>
+    <td>$info->tussenvoegsel</td>
+    <td>$info->achternaam</td>
+    <td>
+    <a href='delete.php?Id=$info->id'>
+        <img src='img/b_drop.png' alt='cross'
+    </td>
+    <td>
+    <a href='update.php?Id=$info->id'>
+        <img src='img/b_edit.png' alt='pen'
+    </td>
+</tr>";
+}
+?>
+<h3>Autos</h3>
+<a href="index.php">
+    <input type="button" value="maak een nieuw record">
+</a>
+<table border="1">
+    <thead>
+        <th>Merk</th>
+        <th>Model</th>
+        <th>Topsnelheid</th>
+        <th>Prijs</th>
+        <th></th>
+    </thead>
+    <tbody>
+           <?php echo $row ?>
+    </tbody>
+</table>
