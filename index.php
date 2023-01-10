@@ -8,7 +8,7 @@ try
     $pdo = new PDO($dsn, $dbUser, $dbPass);
     if ($pdo)
     {
-       // echo "er is een verbinding";
+       // echo "er is een verbinding!!!!";
     }
     else 
     {
@@ -43,10 +43,6 @@ foreach($result as $info)
                 <td>
                 <a href='delete.php?Id=$info->id'>
                     <img src='img/b_drop.png' alt='cross'
-                </td>
-                <td>
-                <a href='update.php?Id=$info->id'>
-                    <img src='img/b_edit.png' alt='pen'
                 </td>
             </tr>";
 }
