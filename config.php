@@ -1,7 +1,6 @@
 <?php
 
-//hieronder login gegevens db 
 $dbHost = 'localhost';
 $dbName = 'php-pdo-crud-toets';
-$dbUser = 'root';
-$dbPass = 'root';
+$dbUser = 'rra_2209a';
+$dbPass = 'l[EW-[OmYL.nJp/3';
